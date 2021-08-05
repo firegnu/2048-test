@@ -1,0 +1,112 @@
+{
+  "version": "1.4.3",
+  "name": "2048",
+  "orientation": "portrait",
+  "subtitle": "Fun and addictive puzzle game",
+  "description": "Use the directional keys to merge numbers until you get to 2048! Keep playing beyond 2048 to showoff your skills and achieve the top score.",
+  "launch_path": "/index.html",
+  "categories": ["games"],
+  "origin": "app://kaios.2048.net",
+  "icons": {
+    "56": "/icons/2048_56.png",
+    "112": "/icons/2048_112.png"
+  },
+  "locales": {
+    "en-US": {
+      "name": "2048",
+      "subtitle": "Fun and addictive puzzle game",
+      "description": "Use the directional keys to merge numbers until you get to 2048! Keep playing beyond 2048 to showoff your skills and achieve the top score."
+    },
+    "sw-ZA": {
+      "name": "2048",
+      "subtitle": "Mchezo wa mafumbo unaofurahisha na wenye kuzoesha",
+      "description": "Tumia vibonyezo vya mwelekeo ili kuunganisha nambari hadi ufikie 2048! Endelea kucheza kupita 2048 ili kuonyesha maarifa yako na kufikia alama ya juu."
+    },
+    "ur-PK": {
+      "name": "2048",
+      "subtitle": "دلچسپ اور تفریحی پزل گیم ",
+      "description": " ایرو کیز کا استعمال کرتے ہوئے نمبروں کو ضم کریں یہاں تک کہ آپ کا سکور  2048 ہو جائے! اپنی مہارت دکھانے اور زیادہ سے زیادہ اسکور کرنے کے لئے 2048 سے آگے کھیل جاری رکھیں۔"
+    },
+    "zh-CN": {
+      "name": "2048",
+      "subtitle": "非常有趣且让人上瘾的益智游戏",
+      "description": "使用方向键合并数字，直至总数达到 2048！达到 2048 以后继续游戏，以展示技能并争取获得最高得分。"
+    },
+    "vi-VN": {
+      "name": "2048",
+      "subtitle": "Trò chơi giải đố vui nhộn và gây nghiện",
+      "description": "Sử dụng các phím chỉ hướng để hợp nhất các số cho đến khi bạn đạt đến 2048! Tiếp tục chơi vượt qua 2048 để thể hiện kỹ năng của bạn và đạt được điểm số cao nhất."
+    },
+    "pt-BR": {
+      "name": "2048",
+      "subtitle": "Jogo de quebra-cabeças divertido e viciante",
+      "description": "Utilize as setas direcionais para unir números até obter 2048! Continue a jogar depois de 2048 para exibir as suas habilidades e alcançar a pontuação máxima."
+    },
+    "pt-PT": {
+      "name": "2048",
+      "subtitle": "Jogo de quebra-cabeças divertido e viciante",
+      "description": "Utilize as setas direcionais para unir números até obter 2048! Continue a jogar depois de 2048 para exibir as suas habilidades e alcançar a pontuação máxima."
+    },
+    "ru-RU": {
+      "name": "2048",
+      "subtitle": "Веселая и захватывающая пазл-игра",
+      "description": "Используйте клавиши со стрелками для объединения чисел, пока не получите 2048! Продолжайте играть после 2048, чтобы продемонстрировать свои навыки и добиться максимального результата."
+    },
+    "ar-SA": {
+      "name": "2048",
+      "subtitle": "لعبة ألغاز ممتعة وجذابة",
+      "description": "استخدم مفاتيح الاتجاهات لدمج الأرقام حتى تصل إلى رقم 2048! استمر في اللعب إلى ما بعد 2048 لإظهار مهاراتك وتحقيق أعلى الدرجات."
+    },
+    "de-DE": {
+      "name": "2048",
+      "subtitle": "Unterhaltsames Puzzlespiel, das süchtig macht",
+      "description": "Mit den Richtungstasten fügen Sie Zahlen zusammen, bis Sie 2 048 erreichen! Spielen Sie weiter als bis 2 048, um Ihr Talent zur Schau zu stellen und den Highscore zu schaffen."
+    },
+    "es-ES": {
+      "name": "2048",
+      "subtitle": "Juego de puzles divertido y adictivo",
+      "description": "Utiliza las teclas de dirección para sumar números hasta llegar a 2048. Sigue jugando y supera el 2048 para demostrar tu destreza y lograr la mejor puntuación."
+    },
+    "es-US": {
+      "name": "2048",
+      "subtitle": "Juego de puzles divertido y adictivo",
+      "description": "Utiliza las teclas de dirección para sumar números hasta llegar a 2048. Sigue jugando y supera el 2048 para demostrar tu destreza y lograr la mejor puntuación."
+    },
+    "fr-FR": {
+      "name": "2048",
+      "subtitle": "Puzzle amusant et addictif",
+      "description": "Utilisez les touches fléchées pour fusionner les nombres jusqu’à obtenir 2048. Continuez après 2048 pour montrer vos compétences et battre le meilleur score."
+    },
+    "fr-CA": {
+      "name": "2048",
+      "subtitle": "Puzzle amusant et addictif",
+      "description": "Utilisez les touches fléchées pour fusionner les nombres jusqu’à obtenir 2048. Continuez après 2048 pour montrer vos compétences et battre le meilleur score."
+    }
+  },
+  "fullscreen" : true,
+ "developer": {
+   "name": "KaiOS",
+   "url": "http://kaiostech.com"
+ },
+  "type": "privileged",
+  "permissions": {
+    "mobiledata":{},
+    "wifidata":{},
+    "systemXHR": {},
+    "feature-detection" : {},
+    "contacts": {
+      "access": "readwrite"
+    },
+    "spatialnavigation-app-manage": {}
+  },
+  "datastores-access": {
+    "jio_service_store": {
+      "access": "readonly",
+      "description":"Jio Service store"
+    }
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en-US"
+}

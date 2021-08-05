@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'DINPro-Bold';
+  src: url("../font/DINPro-Bold.otf") format("opentype");
+  font-style: normal;
+}
+
+html, body {
+  font-family: 'DINPro-Bold';
+  margin: 0;
+  padding: 0;
+  background: black;
+  overflow: hidden;
+}
+
+canvas {
+  border:none;
+}
+
+iframe[id^="vmx-frameInt_"] {
+  position: relative;
+  top: 26px;
+  background-color: black;
+}
+
+.holds-the-iframe {
+    background:url(../assets/loading.png) center center no-repeat;
+}
