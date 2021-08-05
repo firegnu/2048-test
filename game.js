@@ -994,9 +994,7 @@ function JioKaiAds(adsWrapperId) {
 
 JioKaiAds.prototype.showAds = function(containerCfg) {
   if (
-    navigator.connection &&
-    ('wifi' === navigator.connection.type ||
-      'cellular' === navigator.connection.type)
+    true
   ) {
     const timeout = setTimeout(function() {
       const frame = document.getElementById('iframe-ads');
