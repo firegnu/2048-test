@@ -3,7 +3,7 @@ var locale = {
 };
 
 Phaser.Plugin.Navigator = function (parent, game) {
-    Phaser.Plugin.call(this, parent, game);
+  Phaser.Plugin.call(this, parent, game);
 };
 Phaser.Plugin.Navigator.prototype = Object.create(Phaser.Plugin.prototype);
 Phaser.Plugin.Navigator.prototype.constructor = Phaser.Plugin.SamplePlugin;
@@ -11,28 +11,28 @@ Phaser.Plugin.Navigator.prototype.constructor = Phaser.Plugin.SamplePlugin;
 Phaser.Plugin.Navigator.prototype.stack = [];
 
 Phaser.Plugin.Navigator.prototype.init = function () {
-    game.softkey = game.plugins.add(Phaser.Plugin.Softkey);
+  game.softkey = game.plugins.add(Phaser.Plugin.Softkey);
 };
 
 Phaser.Plugin.Navigator.prototype.register = function (arg) {
-    this.stack.push(Object.assign({}, game.softkey.getLastConfig()));
+  this.stack.push(Object.assign({}, game.softkey.getLastConfig()));
 
-    this.group = game.softkey.config({ style: arg.style, label: arg.label });
-    game.softkey.listener(arg.action);
+  this.group = game.softkey.config({ style: arg.style, label: arg.label });
+  game.softkey.listener(arg.action);
 };
 
 Phaser.Plugin.Navigator.prototype.setLastConfig = function () {
-    var temp = this.stack.pop();
-    this.group = game.softkey.config({ style: temp.style, label: temp.label });
-    game.softkey.listener(temp.action);
+  var temp = this.stack.pop();
+  this.group = game.softkey.config({ style: temp.style, label: temp.label });
+  game.softkey.listener(temp.action);
 };
 
 Phaser.Plugin.Navigator.prototype.stackPopAll = function () {
-    this.stack = [];
+  this.stack = [];
 };
 
 Phaser.Plugin.Navigator.prototype.destroy = function () {
-    this.group.kill();
+  this.group.kill();
 };
 
 Phaser.Plugin.Softkey = function (parent, game) {
@@ -538,7 +538,7 @@ var MainGame = {
   },
 
   optionPause: function () {
-      Render.Options.show(this);
+    Render.Options.show(this);
   },
 
   bind: function () {
@@ -551,11 +551,11 @@ var MainGame = {
       },
       action: {
         softLeft: function () {
-            game.ads.nextState = 'MainGame';
-            Render.Restart.show();
+          game.ads.nextState = 'MainGame';
+          Render.Restart.show();
         },
         softRight: function () {
-            self.optionPause();
+          self.optionPause();
         },
         ArrowUp: function () {
           self.moveUp();
@@ -929,7 +929,7 @@ var menu = {
     });
 
     game.navigator.group.children.forEach(function (item) {
-        item.setShadow(3, 3, 'rgba(0,0,0,0.3)', 5);
+      item.setShadow(3, 3, 'rgba(0,0,0,0.3)', 5);
     });
   },
   renderText: function () {
@@ -996,16 +996,6 @@ JioKaiAds.prototype.showAds = function(containerCfg) {
   if (
     true
   ) {
-    const timeout = setTimeout(function() {
-      const frame = document.getElementById('iframe-ads');
-      if (frame) {
-        frame.remove();
-      }
-      clearTimeout(timeout);
-      navigator.spatialNavigationEnabled = false;
-      containerCfg.onAdFinished();
-    }, 10000);
-
     const ifrm = document.createElement('iframe');
     ifrm.setAttribute('id', 'iframe-ads');
     ifrm.setAttribute('style', 'border: none;');
@@ -1024,21 +1014,9 @@ JioKaiAds.prototype.showAds = function(containerCfg) {
         uid: window.uid
       },
       listeners: {
-        adviewability: function() {
-          clearTimeout(timeout);
-          navigator.spatialNavigationEnabled = true;
-          console.log('...............................................adsvisibility!!!!');
-        },
         adclose: function() {
-          clearTimeout(timeout);
           console.log('ad close 1');
-          navigator.spatialNavigationEnabled = false;
-          console.log('close spatiaNavigation...............');
           containerCfg.onAdFinished();
-        },
-        adclick: function() {
-          clearTimeout(timeout);
-          console.log('ad clicked 1');
         }
       }
     });
@@ -1050,28 +1028,28 @@ JioKaiAds.prototype.showAds = function(containerCfg) {
 }
 
 var game = new Phaser.Game(
-    240,
-    320,
-    Phaser.CANVAS,
-    'phaser-game'
+  240,
+  320,
+  Phaser.CANVAS,
+  'phaser-game'
 );
 
 game.custom = {
-    debug: true,
-    fontStyle: {
-        font: "DINPro-Bold",
-        fontSize: '16px',
-        fill: '#FFFFFF'
-    }
+  debug: true,
+  fontStyle: {
+    font: "DINPro-Bold",
+    fontSize: '16px',
+    fill: '#FFFFFF'
+  }
 };
 
 
 // Conditional add for scroll Advertisement
 document.addEventListener("keydown", function (e) {
-    e.key === "ArrowDown" && e.preventDefault();
+  e.key === "ArrowDown" && e.preventDefault();
 });
 document.addEventListener("keydown", function (e) {
-    e.key === "ArrowUp" && e.preventDefault();
+  e.key === "ArrowUp" && e.preventDefault();
 });
 
 // var adsConfig = {
@@ -1136,22 +1114,22 @@ game.state.add('score', score);
 
 game.init = false;
 navigator.mozL10n.ready(function () {
-    if (Render.Options.isPaused) {
-     Render.Options.hide();
-    }
-    if (Render.Confirm.isOpen) {
-      Render.Confirm.hide();
-    }
-    if (Render.YouLose.isLose) {
-      Render.YouLose.hide();
-    }
-    game.paused = false;
-    if (!game.init) {
-        game.ads.nextState = 'menu';
-        game.state.start('ads', true, false, 'splash');
-    } else {
-      game.state.start('menu');
-    }
+  if (Render.Options.isPaused) {
+    Render.Options.hide();
+  }
+  if (Render.Confirm.isOpen) {
+    Render.Confirm.hide();
+  }
+  if (Render.YouLose.isLose) {
+    Render.YouLose.hide();
+  }
+  game.paused = false;
+  if (!game.init) {
+    game.ads.nextState = 'menu';
+    game.state.start('ads', true, false, 'splash');
+  } else {
+    game.state.start('menu');
+  }
 });
 
 // document.addEventListener('DOMContentLoaded', function ()  {
@@ -1168,85 +1146,85 @@ navigator.mozL10n.ready(function () {
 
 
 Render.Confirm = {
-    isOpen: false,
-    show: function () {
-        game.paused = true;
-        MainGame.canMove = false;
-        this.isOpen = true;
-        this.confirmGroup = game.add.group();
-        var confirmBack = game.add.graphics();
-        confirmBack.beginFill(0x000000, 0.9);
-        confirmBack.drawRect(0, 0, 240, 320);
-        if(window.ads && (typeof window.ads.call === 'function')) {
-          game.navigator.register({
-            style: game.custom.fontStyle,
-            label: {
-              lsk: locale.getLocale('viewAds'),
-              rsk: locale.getLocale('quit')
-            },
-            action: {
-              softLeft: function() {
-                window.ads.call('click');
-              },
-              enter: function() {
-                window.ads.call('click');
-              },
-              softRight: function() {
-                // window.close();
-              },
-              backspace: function() {
-                Render.Confirm.hide();
-              },
-              endCall: function() {
-                // window.close();
-              }
-            }
-          });
-        } else {
-          game.navigator.register({
-            style: game.custom.fontStyle,
-            label: {
-              lsk: locale.getLocale('cancel'),
-              rsk: locale.getLocale('quit')
-            },
-            action: {
-              softLeft: function() {
-                Render.Confirm.hide();
-              },
-              softRight: function() {
-                // window.close();
-              },
-              backspace: function() {
-                Render.Confirm.hide();
-              },
-              endCall: function() {
-                // window.close();
-              }
-            }
-          });
+  isOpen: false,
+  show: function () {
+    game.paused = true;
+    MainGame.canMove = false;
+    this.isOpen = true;
+    this.confirmGroup = game.add.group();
+    var confirmBack = game.add.graphics();
+    confirmBack.beginFill(0x000000, 0.9);
+    confirmBack.drawRect(0, 0, 240, 320);
+    if(window.ads && (typeof window.ads.call === 'function')) {
+      game.navigator.register({
+        style: game.custom.fontStyle,
+        label: {
+          lsk: locale.getLocale('viewAds'),
+          rsk: locale.getLocale('quit')
+        },
+        action: {
+          softLeft: function() {
+            window.ads.call('click');
+          },
+          enter: function() {
+            window.ads.call('click');
+          },
+          softRight: function() {
+            // window.close();
+          },
+          backspace: function() {
+            Render.Confirm.hide();
+          },
+          endCall: function() {
+            // window.close();
+          }
         }
-
-
-        var logo = game.add.image(game.world.centerX, game.world.centerY - 50, 'logo');
-        logo.anchor.setTo(0.5)
-
-        var dialog = game.add.image(game.world.centerX, game.height - 80, 'bg-dialog');
-        dialog.anchor.setTo(0.5)
-
-        var txt = game.add.text(dialog.x, dialog.y, locale.getLocale('confirmText'), { fontSize: 16, align: "center", fill: "#0a0a0a" });
-        txt.anchor.setTo(0.5);
-        txt.wordWrap = true;
-        txt.wordWrapWidth = 200;
-
-        this.confirmGroup.addMultiple([confirmBack, logo, dialog, txt]);
-    },
-    hide: function () {
-        MainGame.canMove = true;
-        game.paused = false;
-        this.isOpen = false;
-        this.confirmGroup.removeAll();
-        game.navigator.setLastConfig();
+      });
+    } else {
+      game.navigator.register({
+        style: game.custom.fontStyle,
+        label: {
+          lsk: locale.getLocale('cancel'),
+          rsk: locale.getLocale('quit')
+        },
+        action: {
+          softLeft: function() {
+            Render.Confirm.hide();
+          },
+          softRight: function() {
+            // window.close();
+          },
+          backspace: function() {
+            Render.Confirm.hide();
+          },
+          endCall: function() {
+            // window.close();
+          }
+        }
+      });
     }
+
+
+    var logo = game.add.image(game.world.centerX, game.world.centerY - 50, 'logo');
+    logo.anchor.setTo(0.5)
+
+    var dialog = game.add.image(game.world.centerX, game.height - 80, 'bg-dialog');
+    dialog.anchor.setTo(0.5)
+
+    var txt = game.add.text(dialog.x, dialog.y, locale.getLocale('confirmText'), { fontSize: 16, align: "center", fill: "#0a0a0a" });
+    txt.anchor.setTo(0.5);
+    txt.wordWrap = true;
+    txt.wordWrapWidth = 200;
+
+    this.confirmGroup.addMultiple([confirmBack, logo, dialog, txt]);
+  },
+  hide: function () {
+    MainGame.canMove = true;
+    game.paused = false;
+    this.isOpen = false;
+    this.confirmGroup.removeAll();
+    game.navigator.setLastConfig();
+  }
 };
 
 
@@ -1488,123 +1466,123 @@ Render.Score = function (self) {
 };
 
 Render.YouLose = {
-    isLose: false,
-    show: function (currentScore) {
-        this.isLose = true;
-        MainGame.canMove = false;
-        this.youLoseGroup = game.add.group();
-        var bgYouLose = game.add.image(0, 0, 'bg-youlose');
+  isLose: false,
+  show: function (currentScore) {
+    this.isLose = true;
+    MainGame.canMove = false;
+    this.youLoseGroup = game.add.group();
+    var bgYouLose = game.add.image(0, 0, 'bg-youlose');
 
-        game.navigator.register({
-            style: game.custom.fontStyle,
-            label: {
-                lsk: locale.getLocale('home'),
-                rsk: locale.getLocale('otherRestart')
-            },
-            action: {
-                softLeft: function() {
-                    Render.YouLose.hide();
-                    game.ads.nextState = 'menu';
-                    game.state.start('ads', true, false, 'goHome');
-                },
-                softRight: function() {
-                    Render.YouLose.hide();
-                    game.ads.nextState = 'MainGame';
-                    game.state.start('ads', true, false, 'playAgain');
-                }
-              }
-        });
+    game.navigator.register({
+      style: game.custom.fontStyle,
+      label: {
+        lsk: locale.getLocale('home'),
+        rsk: locale.getLocale('otherRestart')
+      },
+      action: {
+        softLeft: function() {
+          Render.YouLose.hide();
+          game.ads.nextState = 'menu';
+          game.state.start('ads', true, false, 'goHome');
+        },
+        softRight: function() {
+          Render.YouLose.hide();
+          game.ads.nextState = 'MainGame';
+          game.state.start('ads', true, false, 'playAgain');
+        }
+      }
+    });
 
-        var style = Object.assign({}, game.custom.fontStyle);
+    var style = Object.assign({}, game.custom.fontStyle);
 
-        var title = game.add.image(game.world.centerX, 90, "youlose");
-        title.anchor.setTo(0.5);
+    var title = game.add.image(game.world.centerX, 90, "youlose");
+    title.anchor.setTo(0.5);
 
-        style.fontSize = 20;
-        var ohNo = game.add.text(title.x, 80, locale.getLocale('ohNo'), style);
-        ohNo.anchor.setTo(0.5, 0.5);
+    style.fontSize = 20;
+    var ohNo = game.add.text(title.x, 80, locale.getLocale('ohNo'), style);
+    ohNo.anchor.setTo(0.5, 0.5);
 
-        var youlose = game.add.text(title.x, 105, locale.getLocale('youlose'), style);
-        youlose.anchor.setTo(0.5, 0.5);
+    var youlose = game.add.text(title.x, 105, locale.getLocale('youlose'), style);
+    youlose.anchor.setTo(0.5, 0.5);
 
-        style.fontSize = 16;
-        var score = game.add.text(game.world.centerX, game.world.centerY, locale.getLocale('score'), style);
-        score.anchor.setTo(0.5);
+    style.fontSize = 16;
+    var score = game.add.text(game.world.centerX, game.world.centerY, locale.getLocale('score'), style);
+    score.anchor.setTo(0.5);
 
-        style.fontSize = 50;
-        var scoreNumber = game.add.text(score.x, score.y + 35, currentScore, style);
-        scoreNumber.anchor.setTo(0.5);
-        this.youLoseGroup.addMultiple([bgYouLose, title, ohNo, youlose, score, scoreNumber]);
-    },
-    hide:function(){
-        MainGame.canMove = true;
-        this.isLose = false;
-        this.youLoseGroup.removeAll();
-        game.navigator.setLastConfig();
-    }
+    style.fontSize = 50;
+    var scoreNumber = game.add.text(score.x, score.y + 35, currentScore, style);
+    scoreNumber.anchor.setTo(0.5);
+    this.youLoseGroup.addMultiple([bgYouLose, title, ohNo, youlose, score, scoreNumber]);
+  },
+  hide:function(){
+    MainGame.canMove = true;
+    this.isLose = false;
+    this.youLoseGroup.removeAll();
+    game.navigator.setLastConfig();
+  }
 };
 
 Render.YouWin = {
-    isWin: false,
-    show: function (currentScore) {
-        this.isWin = true;
-        MainGame.didWin = true;
-        MainGame.canMove = false;
-        this.youWinGroup = game.add.group();
-        var bgYouLose = game.add.image(0, 0, 'bg-youwin');
+  isWin: false,
+  show: function (currentScore) {
+    this.isWin = true;
+    MainGame.didWin = true;
+    MainGame.canMove = false;
+    this.youWinGroup = game.add.group();
+    var bgYouLose = game.add.image(0, 0, 'bg-youwin');
 
-        game.navigator.register({
-            style: game.custom.fontStyle,
-            label: {
-                lsk: locale.getLocale('home'),
-                csk: locale.getLocale('continue'),
-                rsk: locale.getLocale('otherRestart')
-            },
-            action: {
-                softLeft: function() {
-                    Render.YouWin.hide();
-                    game.ads.nextState = 'menu';
-                    game.state.start('ads', true, false, 'goHome');
-                },
-                enter: function() {
-                    Render.YouWin.hide();
-                },
-                softRight: function() {
-                    this.isWin = false;
-                    game.ads.nextState = 'MainGame';
-                    game.state.start('ads', true, false, 'playAgain');
-                    Render.YouWin.hide();
+    game.navigator.register({
+      style: game.custom.fontStyle,
+      label: {
+        lsk: locale.getLocale('home'),
+        csk: locale.getLocale('continue'),
+        rsk: locale.getLocale('otherRestart')
+      },
+      action: {
+        softLeft: function() {
+          Render.YouWin.hide();
+          game.ads.nextState = 'menu';
+          game.state.start('ads', true, false, 'goHome');
+        },
+        enter: function() {
+          Render.YouWin.hide();
+        },
+        softRight: function() {
+          this.isWin = false;
+          game.ads.nextState = 'MainGame';
+          game.state.start('ads', true, false, 'playAgain');
+          Render.YouWin.hide();
 
-                }
-            }
-        });
+        }
+      }
+    });
 
-        var style = Object.assign({}, game.custom.fontStyle);
+    var style = Object.assign({}, game.custom.fontStyle);
 
-        var title = game.add.image(game.world.centerX, 90, "youwin");
-        title.anchor.setTo(0.5);
+    var title = game.add.image(game.world.centerX, 90, "youwin");
+    title.anchor.setTo(0.5);
 
-        style.fontSize = 18;
-        var congratulations = game.add.text(title.x, 80, locale.getLocale('congratulations'), style);
-        congratulations.anchor.setTo(0.5, 0.5);
+    style.fontSize = 18;
+    var congratulations = game.add.text(title.x, 80, locale.getLocale('congratulations'), style);
+    congratulations.anchor.setTo(0.5, 0.5);
 
-        var youGot = game.add.text(title.x, 105, locale.getLocale('youGot'), style);
-        youGot.anchor.setTo(0.5, 0.5);
+    var youGot = game.add.text(title.x, 105, locale.getLocale('youGot'), style);
+    youGot.anchor.setTo(0.5, 0.5);
 
-        style.fontSize = 16;
-        var score = game.add.text(game.world.centerX, game.world.centerY, locale.getLocale('score'), style);
-        score.anchor.setTo(0.5);
+    style.fontSize = 16;
+    var score = game.add.text(game.world.centerX, game.world.centerY, locale.getLocale('score'), style);
+    score.anchor.setTo(0.5);
 
-        style.fontSize = 50;
-        var scoreNumber = game.add.text(score.x, score.y + 35, currentScore, style);
-        scoreNumber.anchor.setTo(0.5);
+    style.fontSize = 50;
+    var scoreNumber = game.add.text(score.x, score.y + 35, currentScore, style);
+    scoreNumber.anchor.setTo(0.5);
 
-        this.youWinGroup.addMultiple([bgYouLose, title, congratulations, youGot, score, scoreNumber]);
-    },
-    hide: function () {
-        MainGame.canMove = true;
-        this.isWin = false;
-        this.youWinGroup.removeAll();
-        game.navigator.setLastConfig();
-    }
+    this.youWinGroup.addMultiple([bgYouLose, title, congratulations, youGot, score, scoreNumber]);
+  },
+  hide: function () {
+    MainGame.canMove = true;
+    this.isWin = false;
+    this.youWinGroup.removeAll();
+    game.navigator.setLastConfig();
+  }
 };
